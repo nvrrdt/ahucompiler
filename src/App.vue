@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <initialisation msg="Welcomeeee to Your Vue.js App"/>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <img alt="Vue logo" src="./assets/logo.png">
+        <initialisation msg="Welcomeeee to Your Vue.js App"/>
+      </div>
+    </div>
   </div>
 </template>
 
