@@ -1,42 +1,66 @@
 <template>
   <div>
-    <h1>{{ msg }}</h1>
-    <div class="row justify-content-center">
+    <h1>ahucompiler</h1>
+    <hr>
+    <div class="row">
       <div class="col-4">
-        <b-form-input id="range-1" v-model="value1" type="text" readonly>Project number</b-form-input>
+        <b-form-input id="keyProjectNumber" v-model="keyProjectNumber" type="text" readonly></b-form-input>
       </div>
       <div class="col-8">
-        <b-form-input id="range-2" v-model="value2" type="text" placeholder="Enter your name" autofocus tabindex="1"></b-form-input>
+        <b-form-input id="valProjectNumber" v-model="valProjectNumber" type="text" autofocus tabindex="1"></b-form-input>
       </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row">
       <div class="col-4">
-        <b-form-input id="range-1" v-model="value1" type="text" readonly>Client</b-form-input>
+        <b-form-input id="keyClient" v-model="keyClient" type="text" readonly></b-form-input>
       </div>
       <div class="col-8">
-        <b-form-input id="range-2" v-model="value2" type="text" placeholder="Enter your name" tabindex="2"></b-form-input>
+        <b-form-input id="valClient" v-model="valClient" type="text" tabindex="2"></b-form-input>
       </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row">
       <div class="col-4">
-        <b-form-input id="range-1" v-model="value1" type="text" readonly>Project name</b-form-input>
+        <b-form-input id="keyProjectName" v-model="keyProjectName" type="text" readonly></b-form-input>
       </div>
       <div class="col-8">
-        <b-form-input id="range-2" v-model="value2" type="text" placeholder="Enter your name" tabindex="3"></b-form-input>
+        <b-form-input id="valProjectName" v-model="valProjectName" type="text" tabindex="3" @keydown="toFirstAHU()"></b-form-input>
       </div>
     </div>
+    <hr>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Initialisation',
-  props: {
-    msg: String
-  },
   data: function() {
     return {
-      value1: 'test'
+      keyProjectNumber: 'Project number:',
+      valProjectNumber: '',
+      keyClient: 'Client:',
+      valClient: '',
+      keyProjectName: 'Project name:',
+      valProjectName: ''
+    }
+  },
+  methods: {
+    toFirstAHU: function () {
+      console.log('test')
+    }
+  },
+  mounted: function () {
+    var inputs = document.querySelectorAll("input,select")
+    for (var i = 0 ; i < inputs.length; i++) {
+      inputs[i].addEventListener("keypress", function(e){
+          if (e.which == 13) {
+            e.preventDefault()
+            var nextInput = document.querySelectorAll('[tabIndex="' + (this.tabIndex + 1) + '"]')
+            if (nextInput.length === 0) {
+                nextInput = document.querySelectorAll('[tabIndex="1"]')
+            }
+            nextInput[0].focus();
+          }
+      })
     }
   }
 }
@@ -44,5 +68,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.row {margin: 10px 0px 0px 0px;}
+h1 {margin: 0px 0px 20px 0px;}
 </style>

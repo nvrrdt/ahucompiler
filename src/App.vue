@@ -2,8 +2,7 @@
   <div id="app">
     <div class="row justify-content-center">
       <div class="col-6">
-        <img alt="Vue logo" src="./assets/logo.png">
-        <initialisation msg="Welcomeeee to Your Vue.js App"/>
+        <initialisation/>
       </div>
     </div>
   </div>
@@ -27,6 +26,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 </style>
