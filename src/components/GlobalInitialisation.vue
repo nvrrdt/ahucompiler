@@ -27,12 +27,18 @@
       </div>
     </div>
     <hr>
+    <unit-initialisation v-if="showUnit"/>
   </div>
 </template>
 
 <script>
+import UnitInitialisation from './UnitInitialisation.vue'
+
 export default {
-  name: 'Initialisation',
+  name: 'GlobalInitialisation',
+  components: {
+    UnitInitialisation
+  },
   data: function() {
     return {
       keyProjectNumber: 'Project number:',
@@ -40,12 +46,14 @@ export default {
       keyClient: 'Client:',
       valClient: '',
       keyProjectName: 'Project name:',
-      valProjectName: ''
+      valProjectName: '',
+      showUnit: false
     }
   },
   methods: {
     toFirstAHU: function () {
       console.log('test')
+      this.showUnit = true
     }
   },
   mounted: function () {

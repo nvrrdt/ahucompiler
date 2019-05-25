@@ -2,19 +2,19 @@
   <div id="app">
     <div class="row justify-content-center">
       <div class="col-6">
-        <initialisation/>
+        <global-initialisation/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Initialisation from './components/Initialisation.vue'
+import GlobalInitialisation from './components/GlobalInitialisation.vue'
 
 export default {
   name: 'app',
   components: {
-    Initialisation
+    GlobalInitialisation
   }
 }
 </script>
