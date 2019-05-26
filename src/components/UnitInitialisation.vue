@@ -53,7 +53,7 @@
         <b-form-input id="valPressureReturn" v-model="valPressureReturn" type="text" tabindex="9"></b-form-input>
       </div>
     </div>
-        <div class="row">
+    <div class="row">
       <div class="col-4">
         <b-form-input id="keyCasingType" v-model="keyCasingType" type="text" readonly></b-form-input>
       </div>
@@ -61,7 +61,7 @@
         <b-form-input id="valCasingType" v-model="valCasingType" type="text" tabindex="10"></b-form-input>
       </div>
     </div>
-        <div class="row">
+    <div class="row">
       <div class="col-4">
         <b-form-input id="keyExternalFinish" v-model="keyExternalFinish" type="text" readonly></b-form-input>
       </div>
@@ -69,7 +69,7 @@
         <b-form-input id="valExternalFinish" v-model="valExternalFinish" type="text" tabindex="11"></b-form-input>
       </div>
     </div>
-        <div class="row">
+    <div class="row">
       <div class="col-4">
         <b-form-input id="keyInternalFinish" v-model="keyInternalFinish" type="text" readonly></b-form-input>
       </div>
@@ -77,7 +77,7 @@
         <b-form-input id="valInternalFinish" v-model="valInternalFinish" type="text" tabindex="12"></b-form-input>
       </div>
     </div>
-        <div class="row">
+    <div class="row">
       <div class="col-4">
         <b-form-input id="keyFloorFinish" v-model="keyFloorFinish" type="text" readonly></b-form-input>
       </div>
@@ -85,7 +85,7 @@
         <b-form-input id="valFloorFinish" v-model="valFloorFinish" type="text" tabindex="13"></b-form-input>
       </div>
     </div>
-        <div class="row">
+    <div class="row">
       <div class="col-4">
         <b-form-input id="keyCasingDimsSupply" v-model="keyCasingDimsSupply" type="text" readonly></b-form-input>
       </div>
@@ -93,7 +93,7 @@
         <b-form-input id="valCasingDimsSupply" v-model="valCasingDimsSupply" type="text" tabindex="14"></b-form-input>
       </div>
     </div>
-        <div class="row">
+    <div class="row">
       <div class="col-4">
         <b-form-input id="keyCasingDimsReturn" v-model="keyCasingDimsReturn" type="text" readonly></b-form-input>
       </div>
@@ -102,12 +102,22 @@
       </div>
     </div>
     <hr>
+    <div class="row">
+      <div class="col">
+        <autocomplete v-if="showAutocomplete" :items="['Register', 'Filter', 'Recuperation', 'Empty section', 'Coil', 'Fan', 'Humidifier']"></autocomplete>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import Autocomplete from './Autocomplete.vue'
+
 export default {
   name: 'UnitInitialisation',
+  components: {
+    Autocomplete
+  },
   data: function() {
     return {
       keyAhuName: 'Ahu name:',
@@ -133,12 +143,14 @@ export default {
       keyCasingDimsSupply: 'Casing dimensions supply:',
       valCasingDimsSupply: '',
       keyCasingDimsReturn: 'Casing dimensions return:',
-      valCasingDimsReturn: ''
+      valCasingDimsReturn: '',
+      showAutocomplete: false,
     }
   },
   methods: {
     toAssemble: function () {
       console.log('test')
+      this.showAutocomplete = true
     }
   },
   mounted: function () {
