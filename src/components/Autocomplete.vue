@@ -166,16 +166,22 @@
           this.showRegister = true
         } else if (this.search === 'Filter') {
           console.log('Filter')
+          this.showFilter = true
         } else if (this.search === 'Recuperation') {
           console.log('Recuperation')
+          this.showRecuperation = true
         } else if (this.search === 'Empty section') {
           console.log('Empty')
+          this.showEmptySection = true
         } else if (this.search === 'Coil') {
           console.log('Coil')
+          this.showCoil = true
         } else if (this.search === 'Fan') {
           console.log('Fan')
+          this.showFan = true
         } else if (this.search === 'Humidfier') {
           console.log('Humidifier')
+          this.showHumidifier = true
         }
       }
     },
