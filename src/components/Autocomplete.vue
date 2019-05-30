@@ -33,13 +33,50 @@
         {{ result }}
       </li>
     </ul>
+    <div>
+      <register v-if="showRegister"></register>
+    </div>
+    <div>
+      <filter1 v-if="showFilter"></filter1>
+    </div>
+    <div>
+      <recuperation v-if="showRecuperation"></recuperation>
+    </div>
+    <div>
+      <empty-section v-if="showEmptySection"></empty-section>
+    </div>
+    <div>
+      <coil v-if="showCoil"></coil>
+    </div>
+    <div>
+      <fan v-if="showFan"></fan>
+    </div>
+    <div>
+      <humidifier v-if="showHumidifier"></humidifier>
+    </div>
   </div>
 </template>
 
 <script>
+  import Register from './Register.vue'
+  import Filter1 from './Filter.vue'
+  import Recuperation from './Recuperation.vue'
+  import EmptySection from './EmptySection.vue'
+  import Coil from './Coil.vue'
+  import Fan from './Fan.vue'
+  import Humidifier from './Humidifier.vue'
+
   export default {
     name: 'autocomplete',
-
+    components: {
+      Register,
+      Filter1,
+      Recuperation,
+      EmptySection,
+      Coil,
+      Fan,
+      Humidifier
+    },
     props: {
       items: {
         type: Array,
@@ -60,6 +97,13 @@
         search: '',
         isLoading: false,
         arrowCounter: 0,
+        showRegister: false,
+        showFilter: false,
+        showRecuperation: false,
+        showEmptySection: false,
+        showCoil: false,
+        showFan: false,
+        showHumidifier: false
       };
     },
 
@@ -87,6 +131,8 @@
       setResult(result) {
         this.search = result
         this.isOpen = false
+
+        this.onClickAndEnter()
       },
       onArrowDown() {
         if (this.arrowCounter < this.results.length) {
@@ -99,14 +145,37 @@
         }
       },
       onEnter() {
+        if (this.arrowCounter < 0) {
+          return
+        }
         this.search = this.results[this.arrowCounter]
         this.isOpen = false
         this.arrowCounter = -1
+
+        this.onClickAndEnter()
       },
       handleClickOutside(evt) {
         if (!this.$el.contains(evt.target)) {
           this.isOpen = false
           this.arrowCounter = -1
+        }
+      },
+      onClickAndEnter() {
+        if (this.search === 'Register') {
+          console.log('Register')
+          this.showRegister = true
+        } else if (this.search === 'Filter') {
+          console.log('Filter')
+        } else if (this.search === 'Recuperation') {
+          console.log('Recuperation')
+        } else if (this.search === 'Empty section') {
+          console.log('Empty')
+        } else if (this.search === 'Coil') {
+          console.log('Coil')
+        } else if (this.search === 'Fan') {
+          console.log('Fan')
+        } else if (this.search === 'Humidfier') {
+          console.log('Humidifier')
         }
       }
     },
