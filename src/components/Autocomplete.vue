@@ -179,7 +179,7 @@
         } else if (this.search === 'Fan') {
           console.log('Fan')
           this.showFan = true
-        } else if (this.search === 'Humidfier') {
+        } else if (this.search === 'Humidifier') {
           console.log('Humidifier')
           this.showHumidifier = true
         }
