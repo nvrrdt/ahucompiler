@@ -103,7 +103,8 @@
         showEmptySection: false,
         showCoil: false,
         showFan: false,
-        showHumidifier: false
+        showHumidifier: false,
+        prevResult: ''
       };
     },
 
@@ -163,27 +164,65 @@
       onClickAndEnter() {
         if (this.search === 'Register') {
           console.log('Register')
+          this.cmpPrevResult()
+          this.prevResult = this.search
           this.showRegister = true
         } else if (this.search === 'Filter') {
           console.log('Filter')
+          this.cmpPrevResult()
+          this.prevResult = this.search
           this.showFilter = true
         } else if (this.search === 'Recuperation') {
           console.log('Recuperation')
+          this.cmpPrevResult()
+          this.prevResult = this.search
           this.showRecuperation = true
         } else if (this.search === 'Empty section') {
           console.log('Empty')
+          this.cmpPrevResult()
+          this.prevResult = this.search
           this.showEmptySection = true
         } else if (this.search === 'Coil') {
           console.log('Coil')
+          this.cmpPrevResult()
+          this.prevResult = this.search
           this.showCoil = true
         } else if (this.search === 'Fan') {
           console.log('Fan')
+          this.cmpPrevResult()
+          this.prevResult = this.search
           this.showFan = true
         } else if (this.search === 'Humidifier') {
           console.log('Humidifier')
+          this.cmpPrevResult()
+          this.prevResult = this.search
           this.showHumidifier = true
         }
-      }
+      },
+      cmpPrevResult() {
+        if (this.prevResult === 'Register') {
+          console.log('Register2')
+          this.showRegister = false
+        } else if (this.prevResult === 'Filter') {
+          console.log('Filter2')
+          this.showFilter = false
+        } else if (this.prevResult === 'Recuperation') {
+          console.log('Recuperation2')
+          this.showRecuperation = false
+        } else if (this.prevResult === 'Empty section') {
+          console.log('Empty2')
+          this.showEmptySection = false
+        } else if (this.prevResult === 'Coil') {
+          console.log('Coil2')
+          this.showCoil = false
+        } else if (this.prevResult === 'Fan') {
+          console.log('Fan2')
+          this.showFan = false
+        } else if (this.prevResult === 'Humidifier') {
+          console.log('Humidifier2')
+          this.showHumidifier = false
+        }
+      },
     },
     watch: {
       items: function (val, oldValue) {
