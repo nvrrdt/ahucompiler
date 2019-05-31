@@ -67,7 +67,7 @@
   import Humidifier from './Humidifier.vue'
 
   export default {
-    name: 'autocomplete',
+    name: 'Autocomplete',
     components: {
       Register,
       Filter1,
@@ -239,7 +239,7 @@
     destroyed() {
       document.removeEventListener('click', this.handleClickOutside)
     }
-  };
+  }
 </script>
 
 <style>
