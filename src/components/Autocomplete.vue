@@ -12,6 +12,7 @@
           placeholder="Search component:"
           autofocus
           tabindex="16"
+          autocomplete="off"
         />
         <b-list-group
           id="autocomplete-results"
