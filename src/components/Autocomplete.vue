@@ -33,56 +33,18 @@
         {{ result }}
       </li>
     </ul>
-    <div>
-      <register v-if="showRegister"></register>
-    </div>
-    <div>
-      <filter1 v-if="showFilter"></filter1>
-    </div>
-    <div>
-      <recuperation v-if="showRecuperation"></recuperation>
-    </div>
-    <div>
-      <empty-section v-if="showEmptySection"></empty-section>
-    </div>
-    <div>
-      <coil v-if="showCoil"></coil>
-    </div>
-    <div>
-      <fan v-if="showFan"></fan>
-    </div>
-    <div>
-      <humidifier v-if="showHumidifier"></humidifier>
-    </div>
   </div>
 </template>
 
 <script>
-  import Register from './Register.vue'
-  import Filter1 from './Filter.vue'
-  import Recuperation from './Recuperation.vue'
-  import EmptySection from './EmptySection.vue'
-  import Coil from './Coil.vue'
-  import Fan from './Fan.vue'
-  import Humidifier from './Humidifier.vue'
-
   export default {
     name: 'Autocomplete',
-    components: {
-      Register,
-      Filter1,
-      Recuperation,
-      EmptySection,
-      Coil,
-      Fan,
-      Humidifier
-    },
     props: {
-      items: {
+      /* items: {
         type: Array,
         required: false,
         default: () => [],
-      },
+      }, */
       isAsync: {
         type: Boolean,
         required: false,
@@ -104,7 +66,8 @@
         showCoil: false,
         showFan: false,
         showHumidifier: false,
-        prevResult: ''
+        prevResult: '',
+        items: ['Register', 'Filter', 'Recuperation', 'Empty section', 'Coil', 'Fan', 'Humidifier', 'Done']
       };
     },
 
@@ -166,63 +129,63 @@
           console.log('Register')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.showRegister = true
+          this.$parent.$emit('onAddFormElement', 'Register')
         } else if (this.search === 'Filter') {
           console.log('Filter')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.showFilter = true
+          this.$parent.$emit('onAddFormElement', 'Filter1')
         } else if (this.search === 'Recuperation') {
           console.log('Recuperation')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.showRecuperation = true
+          this.$parent.$emit('onAddFormElement', 'Recuperation')
         } else if (this.search === 'Empty section') {
           console.log('Empty')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.showEmptySection = true
+          this.$parent.$emit('onAddFormElement', 'EmptySection')
         } else if (this.search === 'Coil') {
           console.log('Coil')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.showCoil = true
+          this.$parent.$emit('onAddFormElement', 'Coil')
         } else if (this.search === 'Fan') {
           console.log('Fan')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.showFan = true
+          this.$parent.$emit('onAddFormElement', 'Fan')
         } else if (this.search === 'Humidifier') {
           console.log('Humidifier')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.showHumidifier = true
+          this.$parent.$emit('onAddFormElement', 'Humidifier')
         }
       },
       cmpPrevResult() {
         if (this.prevResult === 'Register') {
           console.log('Register2')
-          this.showRegister = false
+          this.$parent.$emit('onDelFormElement')
         } else if (this.prevResult === 'Filter') {
           console.log('Filter2')
-          this.showFilter = false
+          this.$parent.$emit('onDelFormElement')
         } else if (this.prevResult === 'Recuperation') {
           console.log('Recuperation2')
-          this.showRecuperation = false
+          this.$parent.$emit('onDelFormElement')
         } else if (this.prevResult === 'Empty section') {
           console.log('Empty2')
-          this.showEmptySection = false
+          this.$parent.$emit('onDelFormElement')
         } else if (this.prevResult === 'Coil') {
           console.log('Coil2')
-          this.showCoil = false
+          this.$parent.$emit('onDelFormElement')
         } else if (this.prevResult === 'Fan') {
           console.log('Fan2')
-          this.showFan = false
+          this.$parent.$emit('onDelFormElement')
         } else if (this.prevResult === 'Humidifier') {
           console.log('Humidifier2')
-          this.showHumidifier = false
+          this.$parent.$emit('onDelFormElement')
         }
-      },
+      }
     },
     watch: {
       items: function (val, oldValue) {

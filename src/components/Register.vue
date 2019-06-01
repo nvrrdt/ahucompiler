@@ -21,25 +21,15 @@
         <b-form-input id="keyPlacementDamper" v-model="keyPlacementDamper" type="text" readonly></b-form-input>
       </div>
       <div class="col-8">
-        <b-form-input id="valPlacementDamper" v-model="valPlacementDamper" type="text" tabindex="19" @keydown="toNextPart()"></b-form-input>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <!-- <autocomplete v-if="showAutocomplete" :items="['Register', 'Filter', 'Recuperation', 'Empty section', 'Coil', 'Fan', 'Humidifier', 'Done']"></autocomplete> -->
+        <b-form-input id="valPlacementDamper" v-model="valPlacementDamper" type="text" tabindex="19" @keydown="$parent.$emit('onAddFormElement', 'Autocomplete')"></b-form-input>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import Autocomplete from './Autocomplete.vue'
-
 export default {
   name: 'Register',
-  components: {
-    // Autocomplete
-  },
   data: function() {
     return {
       keyDamper: 'Type of damper:',
@@ -53,10 +43,6 @@ export default {
     }
   },
   methods: {
-    toNextPart: function () {
-      console.log('test')
-      this.showAutocomplete = true
-    }
   },
   mounted: function () {
     var inputs = document.querySelectorAll("input,select")

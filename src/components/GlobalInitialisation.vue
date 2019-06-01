@@ -23,22 +23,16 @@
         <b-form-input id="keyProjectName" v-model="keyProjectName" type="text" readonly></b-form-input>
       </div>
       <div class="col-8">
-        <b-form-input id="valProjectName" v-model="valProjectName" type="text" tabindex="3" @keydown="toFirstAHU()"></b-form-input>
+        <b-form-input id="valProjectName" v-model="valProjectName" type="text" tabindex="3" @keydown="$parent.$emit('onAddFormElement', 'UnitInitialisation')"></b-form-input>
       </div>
     </div>
     <hr>
-    <unit-initialisation v-if="showUnit"/>
   </div>
 </template>
 
 <script>
-import UnitInitialisation from './UnitInitialisation.vue'
-
 export default {
   name: 'GlobalInitialisation',
-  components: {
-    UnitInitialisation
-  },
   data: function() {
     return {
       keyProjectNumber: 'Project number:',
@@ -47,14 +41,9 @@ export default {
       valClient: '',
       keyProjectName: 'Project name:',
       valProjectName: '',
-      showUnit: false
     }
   },
   methods: {
-    toFirstAHU: function () {
-      console.log('test')
-      this.showUnit = true
-    }
   },
   mounted: function () {
     var inputs = document.querySelectorAll("input,select")

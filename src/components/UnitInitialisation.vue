@@ -98,26 +98,16 @@
         <b-form-input id="keyCasingDimsReturn" v-model="keyCasingDimsReturn" type="text" readonly></b-form-input>
       </div>
       <div class="col-8">
-        <b-form-input id="valCasingDimsReturn" v-model="valCasingDimsReturn" type="text" tabindex="15" @keydown="toAssemble()"></b-form-input>
+        <b-form-input id="valCasingDimsReturn" v-model="valCasingDimsReturn" type="text" tabindex="15" @keydown="$parent.$emit('onAddFormElement', 'Autocomplete')"></b-form-input>
       </div>
     </div>
     <hr>
-    <div class="row">
-      <div class="col">
-        <autocomplete v-if="showAutocomplete" :items="['Register', 'Filter', 'Recuperation', 'Empty section', 'Coil', 'Fan', 'Humidifier']"></autocomplete>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
-import Autocomplete from './Autocomplete.vue'
-
 export default {
   name: 'UnitInitialisation',
-  components: {
-    Autocomplete
-  },
   data: function() {
     return {
       keyAhuName: 'Ahu name:',
@@ -144,14 +134,9 @@ export default {
       valCasingDimsSupply: '',
       keyCasingDimsReturn: 'Casing dimensions return:',
       valCasingDimsReturn: '',
-      showAutocomplete: false,
     }
   },
   methods: {
-    toAssemble: function () {
-      console.log('test')
-      this.showAutocomplete = true
-    }
   },
   mounted: function () {
     var inputs = document.querySelectorAll("input,select")
