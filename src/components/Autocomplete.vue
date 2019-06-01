@@ -1,38 +1,42 @@
 <template>
   <div class="autocomplete">
-    <b-form-input
-      type="text"
-      @input="onChange"
-      v-model="search"
-      @keydown.down="onArrowDown"
-      @keydown.up="onArrowUp"
-      @keydown.enter="onEnter"
-      placeholder="Search component:"
-      autofocus
-      tabindex="16"
-    />
-    <ul
-      id="autocomplete-results"
-      v-show="isOpen"
-      class="autocomplete-results"
-    >
-      <li
-        class="loading"
-        v-if="isLoading"
-      >
-        Loading results...
-      </li>
-      <li
-        v-else
-        v-for="(result, i) in results"
-        :key="i"
-        @click="setResult(result)"
-        class="autocomplete-result"
-        :class="{ 'is-active': i === arrowCounter }"
-      >
-        {{ result }}
-      </li>
-    </ul>
+    <div class="row">
+      <div class="col">
+        <b-form-input
+          type="text"
+          @input="onChange"
+          v-model="search"
+          @keydown.down="onArrowDown"
+          @keydown.up="onArrowUp"
+          @keydown.enter="onEnter"
+          placeholder="Search component:"
+          autofocus
+          tabindex="16"
+        />
+        <b-list-group
+          id="autocomplete-results"
+          v-show="isOpen"
+          class="autocomplete-results"
+        >
+          <b-list-group-item
+            class="loading"
+            v-if="isLoading"
+          >
+            Loading results...
+          </b-list-group-item>
+          <b-list-group-item
+            v-else
+            v-for="(result, i) in results"
+            :key="i"
+            @click="setResult(result)"
+            class="autocomplete-result"
+            :class="{ 'is-active': i === arrowCounter }"
+          >
+            {{ result }}
+          </b-list-group-item>
+        </b-list-group>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -206,6 +210,11 @@
 </script>
 
 <style>
+  .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
   .autocomplete {
     position: relative;
   }
