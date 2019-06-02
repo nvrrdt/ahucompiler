@@ -23,7 +23,7 @@
         <b-form-input id="keyProjectName" v-model="keyProjectName" type="text" readonly></b-form-input>
       </div>
       <div class="col-8">
-        <b-form-input id="valProjectName" v-model="valProjectName" type="text" tabindex="3" @keydown="$parent.$emit('onAddFormElement', 'UnitInitialisation')"></b-form-input>
+        <b-form-input id="valProjectName" v-model="valProjectName" type="text" tabindex="3" @keydown.enter="$parent.$emit('onAddFormElement', 'UnitInitialisation')"></b-form-input>
       </div>
     </div>
     <hr>

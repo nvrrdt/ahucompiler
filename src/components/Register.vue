@@ -21,7 +21,7 @@
         <b-form-input id="keyPlacementDamper" v-model="keyPlacementDamper" type="text" readonly></b-form-input>
       </div>
       <div class="col-8">
-        <b-form-input id="valPlacementDamper" v-model="valPlacementDamper" type="text" tabindex="19" @keydown="$parent.$emit('onAddFormElement', 'Autocomplete')"></b-form-input>
+        <b-form-input id="valPlacementDamper" v-model="valPlacementDamper" type="text" tabindex="19" @keydown.enter="$parent.$emit('onAddFormElement', 'Autocomplete')"></b-form-input>
       </div>
     </div>
   </div>

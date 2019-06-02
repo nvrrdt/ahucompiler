@@ -98,7 +98,7 @@
         <b-form-input id="keyCasingDimsReturn" v-model="keyCasingDimsReturn" type="text" readonly></b-form-input>
       </div>
       <div class="col-8">
-        <b-form-input id="valCasingDimsReturn" v-model="valCasingDimsReturn" type="text" tabindex="15" @keydown="$parent.$emit('onAddFormElement', 'Autocomplete')"></b-form-input>
+        <b-form-input id="valCasingDimsReturn" v-model="valCasingDimsReturn" type="text" tabindex="15" @keydown.enter="$parent.$emit('onAddFormElement', 'Autocomplete')"></b-form-input>
       </div>
     </div>
     <hr>
