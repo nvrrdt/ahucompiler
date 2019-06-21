@@ -2,103 +2,103 @@
   <div>
     <div class="row">
       <div class="col">
-        <h5 class="text-left">Ahu 1 settings:</h5>
+        <h3 class="text-left">Ahu 1 settings:</h3>
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyAhuName" v-model="keyAhuName" type="text" readonly></b-form-input>
+      <div class="col-3">
+        <span>{{ keyAhuName }}</span>
       </div>
-      <div class="col-8">
-        <b-form-input id="valAhuName" v-model="valAhuName" type="text" autofocus tabindex="4"></b-form-input>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyTypeAhu" v-model="keyTypeAhu" type="text" readonly></b-form-input>
-      </div>
-      <div class="col-8">
-        <b-form-input id="valTypeAhu" v-model="valTypeAhu" type="text" tabindex="5"></b-form-input>
+      <div class="col-9">
+        <span id="valAhuName" contenteditable="true" tabindex="4" @keyup="updateInputAhuName"></span>
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyAirFlowSupply" v-model="keyAirFlowSupply" type="text" readonly></b-form-input>
+      <div class="col-3">
+        <span>{{ keyTypeAhu }}</span>
       </div>
-      <div class="col-8">
-        <b-form-input id="valAirFlowSupply" v-model="valAirFlowSupply" type="text" tabindex="6"></b-form-input>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyPressureSupply" v-model="keyPressureSupply" type="text" readonly></b-form-input>
-      </div>
-      <div class="col-8">
-        <b-form-input id="valPressureSupply" v-model="valPressureSupply" type="text" tabindex="7"></b-form-input>
+      <div class="col-9">
+        <span id="valTypeAhu" contenteditable="true" tabindex="5" @keyup="updateInputTypeAhu"></span>
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyAirFlowReturn" v-model="keyAirFlowReturn" type="text" readonly></b-form-input>
+      <div class="col-3">
+        <span>{{ keyAirFlowSupply }}</span>
       </div>
-      <div class="col-8">
-        <b-form-input id="valAirFlowReturn" v-model="valAirFlowReturn" type="text" tabindex="8"></b-form-input>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyPressureReturn" v-model="keyPressureReturn" type="text" readonly></b-form-input>
-      </div>
-      <div class="col-8">
-        <b-form-input id="valPressureReturn" v-model="valPressureReturn" type="text" tabindex="9"></b-form-input>
+      <div class="col-9">
+        <span id="valAirFlowSupply" contenteditable="true" tabindex="6" @keyup="updateInputAirFlowSupply"></span>
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyCasingType" v-model="keyCasingType" type="text" readonly></b-form-input>
+      <div class="col-3">
+        <span>{{ keyPressureSupply }}</span>
       </div>
-      <div class="col-8">
-        <b-form-input id="valCasingType" v-model="valCasingType" type="text" tabindex="10"></b-form-input>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyExternalFinish" v-model="keyExternalFinish" type="text" readonly></b-form-input>
-      </div>
-      <div class="col-8">
-        <b-form-input id="valExternalFinish" v-model="valExternalFinish" type="text" tabindex="11"></b-form-input>
+      <div class="col-9">
+        <span id="valPressureSupply" contenteditable="true" tabindex="7" @keyup="updateInputPressureSupply"></span>
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyInternalFinish" v-model="keyInternalFinish" type="text" readonly></b-form-input>
+      <div class="col-3">
+        <span>{{ keyAirFlowReturn }}</span>
       </div>
-      <div class="col-8">
-        <b-form-input id="valInternalFinish" v-model="valInternalFinish" type="text" tabindex="12"></b-form-input>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyFloorFinish" v-model="keyFloorFinish" type="text" readonly></b-form-input>
-      </div>
-      <div class="col-8">
-        <b-form-input id="valFloorFinish" v-model="valFloorFinish" type="text" tabindex="13"></b-form-input>
+      <div class="col-9">
+        <span id="valAirFlowReturn" contenteditable="true" tabindex="8" @keyup="updateInputAirFlowReturn"></span>
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyCasingDimsSupply" v-model="keyCasingDimsSupply" type="text" readonly></b-form-input>
+      <div class="col-3">
+        <span>{{ keyPressureReturn }}</span>
       </div>
-      <div class="col-8">
-        <b-form-input id="valCasingDimsSupply" v-model="valCasingDimsSupply" type="text" tabindex="14"></b-form-input>
+      <div class="col-9">
+        <span id="valPressureReturn" contenteditable="true" tabindex="9" @keyup="updateInputPressureReturn"></span>
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyCasingDimsReturn" v-model="keyCasingDimsReturn" type="text" readonly></b-form-input>
+      <div class="col-3">
+        <span>{{ keyCasingType }}</span>
       </div>
-      <div class="col-8">
-        <b-form-input id="valCasingDimsReturn" v-model="valCasingDimsReturn" type="text" tabindex="15" @keydown.enter="$parent.$emit('onAddFormElement', 'Autocomplete')"></b-form-input>
+      <div class="col-9">
+        <span id="valCasingType" contenteditable="true" tabindex="10" @keyup="updateInputCasingType"></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <span>{{ keyExternalFinish }}</span>
+      </div>
+      <div class="col-9">
+        <span id="valExternalFinish" contenteditable="true" tabindex="11" @keyup="updateInputExternalFinish"></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <span>{{ keyInternalFinish }}</span>
+      </div>
+      <div class="col-9">
+        <span id="valInternalFinish" contenteditable="true" tabindex="12" @keyup="updateInputInternalFinish"></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <span>{{ keyFloorFinish }}</span>
+      </div>
+      <div class="col-9">
+        <span id="valFloorFinish" contenteditable="true" tabindex="13" @keyup="updateInputFloorFinish"></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <span>{{ keyCasingDimsSupply }}</span>
+      </div>
+      <div class="col-9">
+        <span id="valCasingDimsSupply" contenteditable="true" tabindex="14" @keyup="updateInputCasingDimsSupply"></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <span>{{ keyCasingDimsReturn }}</span>
+      </div>
+      <div class="col-9">
+        <span id="valCasingDimsReturn" contenteditable="true" tabindex="15" @keyup="updateInputCasingDimsReturn" @keydown.enter="$parent.$emit('onAddFormElement', 'Autocomplete')"></span>
       </div>
     </div>
     <hr>
@@ -137,9 +137,57 @@ export default {
     }
   },
   methods: {
+    updateInputAhuName: function () {
+      this.valAhuName = document.getElementById("valAhuName").innerText
+      console.log(this.valAhuName)
+    },
+    updateInputTypeAhu: function () {
+      this.valTypeAhu = document.getElementById("valTypeAhu").innerText
+      console.log(this.valTypeAhu)
+    },
+    updateInputAirFlowSupply: function () {
+      this.valAirFlowSupply = document.getElementById("valAirFlowSupply").innerText
+      console.log(this.valAirFlowSupply)
+    },
+    updateInputPressureSupply: function () {
+      this.valPressureSupply = document.getElementById("valPressureSupply").innerText
+      console.log(this.valPressureSupply)
+    },
+    updateInputAirFlowReturn: function () {
+      this.valAirFlowReturn = document.getElementById("valAirFlowReturn").innerText
+      console.log(this.valAirFlowReturn)
+    },
+    updateInputPressureReturn: function () {
+      this.valPressureReturn = document.getElementById("valPressureReturn").innerText
+      console.log(this.valPressureReturn)
+    },
+    updateInputCasingType: function () {
+      this.valCasingType = document.getElementById("valCasingType").innerText
+      console.log(this.valCasingType)
+    },
+    updateInputExternalFinish: function () {
+      this.valExternalFinish = document.getElementById("valExternalFinish").innerText
+      console.log(this.valExternalFinish)
+    },
+    updateInputInternalFinish: function () {
+      this.valInternalFinish = document.getElementById("valInternalFinish").innerText
+      console.log(this.valInternalFinish)
+    },
+    updateInputFloorFinish: function () {
+      this.valFloorFinish = document.getElementById("valFloorFinish").innerText
+      console.log(this.valFloorFinish)
+    },
+    updateInputCasingDimsSupply: function () {
+      this.valCasingDimsSupply = document.getElementById("valCasingDimsSupply").innerText
+      console.log(this.valCasingDimsSupply)
+    },
+    updateInputCasingDimsReturn: function () {
+      this.valCasingDimsReturn = document.getElementById("valCasingDimsReturn").innerText
+      console.log(this.valCasingDimsReturn)
+    }
   },
   mounted: function () {
-    var inputs = document.querySelectorAll("input,select")
+    var inputs = document.querySelectorAll("span")
     for (var i = 0 ; i < inputs.length; i++) {
       inputs[i].addEventListener("keypress", function(e){
           if (e.which == 13) {

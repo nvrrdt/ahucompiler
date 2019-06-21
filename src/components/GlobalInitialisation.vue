@@ -23,7 +23,7 @@
         <span>{{ keyProjectName }}</span>
       </div>
       <div class="col-9">
-        <span id="valProjectName" contenteditable="true" tabindex="3" @keyup="updateInputProjectName"></span>
+        <span id="valProjectName" contenteditable="true" tabindex="3" @keyup="updateInputProjectName" @keydown.enter="$parent.$emit('onAddFormElement', 'UnitInitialisation')"></span>
       </div>
     </div>
     <hr>
