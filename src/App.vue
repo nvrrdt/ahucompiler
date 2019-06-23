@@ -2,7 +2,7 @@
   <div id="app">
     <div class="row justify-content-center">
       <div class="col-6">
-        <component v-for="(field, index) in fields" v-bind:is="field" :key="index"></component>
+        <component v-for="(field, index) in fields" v-bind:is="field" :key="index" :max_tabindex_last_component="max_tabindex_last_component"></component>
       </div>
     </div>
   </div>
@@ -36,14 +36,16 @@ export default {
   },
   data: function() {
     return {
-      fields: [GlobalInitialisation]
+      fields: [GlobalInitialisation],
+      max_tabindex_last_component: 0
     }
   },
   methods: {
   },
   mounted: function () {
-    this.$on('onAddFormElement', function(type) {
+    this.$on('onAddFormElement', function(type, max_span_count) {
       this.fields.push(type)
+      this.max_tabindex_last_component = this.max_tabindex_last_component + max_span_count
     })
 
     this.$on('onDelFormElement', function() {

@@ -30,6 +30,7 @@
 <script>
 export default {
   name: 'Register',
+  props: ['max_tabindex_last_component'],
   data: function() {
     return {
       keyDamper: 'Type of damper:',
@@ -37,7 +38,8 @@ export default {
       keyFlexibleConnection: 'Flexible connection:',
       valFlexibleConnection: '',
       keyPlacementDamper: 'Placement of damper:',
-      valPlacementDamper: ''
+      valPlacementDamper: '',
+      max_tabindex_last_comp: this.max_tabindex_last_component
     }
   },
   methods: {
@@ -55,6 +57,7 @@ export default {
     }
   },
   mounted: function () {
+    // proceed to next tabindex when pressing enter
     var inputs = document.querySelectorAll("span")
     for (var i = 0 ; i < inputs.length; i++) {
       inputs[i].addEventListener("keypress", function(e){
@@ -62,12 +65,18 @@ export default {
             e.preventDefault()
             var nextInput = document.querySelectorAll('[tabIndex="' + (this.tabIndex + 1) + '"]')
             if (nextInput.length === 0) {
-                nextInput = document.querySelectorAll('[tabIndex="1"]')
+              return
+              // nextInput = document.querySelectorAll('[tabIndex="1"]')
             }
             nextInput[0].focus();
           }
       })
     }
+
+    // set tabindexes
+    document.getElementById("valDamper").tabIndex = (this.max_tabindex_last_comp + 1).toString()
+    document.getElementById("valFlexibleConnection").tabIndex = (this.max_tabindex_last_comp + 2).toString()
+    document.getElementById("valPlacementDamper").tabIndex = (this.max_tabindex_last_comp + 3).toString()
   }
 }
 </script>

@@ -13,6 +13,7 @@
           autofocus
           tabindex="16"
           autocomplete="off"
+          id="valAutocomplete"
         />
         <b-list-group
           id="autocomplete-results"
@@ -44,18 +45,21 @@
 <script>
   export default {
     name: 'Autocomplete',
-    props: {
-      /* items: {
-        type: Array,
-        required: false,
-        default: () => [],
-      }, */
-      isAsync: {
-        type: Boolean,
-        required: false,
-        default: false,
+    props: [
+      {
+        /* items: {
+          type: Array,
+          required: false,
+          default: () => [],
+        }, */
+        isAsync: {
+          type: Boolean,
+          required: false,
+          default: false,
+        }
       },
-    },
+      'max_tabindex_last_component',
+    ],
 
     data() {
       return {
@@ -72,7 +76,8 @@
         showFan: false,
         showHumidifier: false,
         prevResult: '',
-        items: ['Register', 'Filter', 'Recuperation', 'Empty section', 'Coil', 'Fan', 'Humidifier', 'Done']
+        items: ['Register', 'Filter', 'Recuperation', 'Empty section', 'Coil', 'Fan', 'Humidifier', 'Done'],
+        max_tabindex_last_comp: this.max_tabindex_last_component
       };
     },
 
@@ -134,37 +139,37 @@
           console.log('Register')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.$parent.$emit('onAddFormElement', 'Register')
+          this.$parent.$emit('onAddFormElement', 'Register', 1)
         } else if (this.search === 'Filter') {
           console.log('Filter')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.$parent.$emit('onAddFormElement', 'Filter1')
+          this.$parent.$emit('onAddFormElement', 'Filter1', 1)
         } else if (this.search === 'Recuperation') {
           console.log('Recuperation')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.$parent.$emit('onAddFormElement', 'Recuperation')
+          this.$parent.$emit('onAddFormElement', 'Recuperation', 1)
         } else if (this.search === 'Empty section') {
           console.log('Empty')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.$parent.$emit('onAddFormElement', 'EmptySection')
+          this.$parent.$emit('onAddFormElement', 'EmptySection', 1)
         } else if (this.search === 'Coil') {
           console.log('Coil')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.$parent.$emit('onAddFormElement', 'Coil')
+          this.$parent.$emit('onAddFormElement', 'Coil', 1)
         } else if (this.search === 'Fan') {
           console.log('Fan')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.$parent.$emit('onAddFormElement', 'Fan')
+          this.$parent.$emit('onAddFormElement', 'Fan', 1)
         } else if (this.search === 'Humidifier') {
           console.log('Humidifier')
           this.cmpPrevResult()
           this.prevResult = this.search
-          this.$parent.$emit('onAddFormElement', 'Humidifier')
+          this.$parent.$emit('onAddFormElement', 'Humidifier', 1)
         }
       },
       cmpPrevResult() {
@@ -204,6 +209,7 @@
     mounted() {
       document.addEventListener('click', this.handleClickOutside)
 
+      // proceed to next tabindex when pressing enter
       var inputs = document.querySelectorAll("input")
       for (var i = 0 ; i < inputs.length; i++) {
         inputs[i].addEventListener("keypress", function(e){
@@ -218,6 +224,9 @@
             }
         })
       }
+
+      // set tabindexes
+      document.getElementById("valAutocomplete").tabIndex = (this.max_tabindex_last_comp + 1).toString()
     },
     destroyed() {
       document.removeEventListener('click', this.handleClickOutside)

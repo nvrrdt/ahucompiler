@@ -1,3 +1,2 @@
 -Use splice instead of pop to remove element from array - https://stackoverflow.com/questions/5767325/how-do-i-remove-a-particular-element-from-an-array-in-javascript
--Create dynamic tabindex allocation
 -Then, finalize other components

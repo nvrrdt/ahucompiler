@@ -7,7 +7,7 @@
         <span>{{ keyProjectNumber }}</span>
       </div>
       <div class="col-9">
-        <span id="valProjectNumber" contenteditable="true" tabindex="1" @keyup="updateInputProjectNumber" ref="autofocus"></span>
+        <span id="valProjectNumber" contenteditable="true" @keyup="updateInputProjectNumber" ref="autofocus"></span>
       </div>
     </div>
     <div class="row">
@@ -15,7 +15,7 @@
         <span>{{ keyClient }}</span>
       </div>
       <div class="col-9">
-        <span id="valClient" contenteditable="true" tabindex="2" @keyup="updateInputClient"></span>
+        <span id="valClient" contenteditable="true" @keyup="updateInputClient"></span>
       </div>
     </div>
     <div class="row">
@@ -23,7 +23,7 @@
         <span>{{ keyProjectName }}</span>
       </div>
       <div class="col-9">
-        <span id="valProjectName" contenteditable="true" tabindex="3" @keyup="updateInputProjectName" @keydown.enter="$parent.$emit('onAddFormElement', 'UnitInitialisation')"></span>
+        <span id="valProjectName" contenteditable="true" @keyup="updateInputProjectName" @keydown.enter="$parent.$emit('onAddFormElement', 'UnitInitialisation', 3)"></span>
       </div>
     </div>
     <hr>
@@ -58,6 +58,7 @@ export default {
     }
   },
   mounted: function () {
+    // proceed to next tabindex when pressing enter
     var inputs = document.querySelectorAll("span")
     for (var i = 0 ; i < inputs.length; i++) {
       inputs[i].addEventListener("keypress", function(e){
@@ -74,6 +75,11 @@ export default {
 
     // autofocus
     this.$refs.autofocus.focus()
+
+    // set tabindexes
+    document.getElementById("valProjectNumber").tabIndex = "1"
+    document.getElementById("valClient").tabIndex = "2"
+    document.getElementById("valProjectName").tabIndex = "3"
   }
 }
 </script>
