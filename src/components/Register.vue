@@ -1,27 +1,27 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyDamper" v-model="keyDamper" type="text" readonly></b-form-input>
+      <div class="col-3">
+        <span>{{ keyDamper }}</span>
       </div>
-      <div class="col-8">
-        <b-form-input id="valDamper" v-model="valDamper" type="text" autofocus tabindex="17"></b-form-input>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyFlexibleConnection" v-model="keyFlexibleConnection" type="text" readonly></b-form-input>
-      </div>
-      <div class="col-8">
-        <b-form-input id="valFlexibleConnection" v-model="valFlexibleConnection" type="text" tabindex="18"></b-form-input>
+      <div class="col-9">
+        <span id="valDamper" contenteditable="true" tabindex="17" @keyup="updateInputDamper"></span>
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
-        <b-form-input id="keyPlacementDamper" v-model="keyPlacementDamper" type="text" readonly></b-form-input>
+      <div class="col-3">
+        <span>{{ keyFlexibleConnection }}</span>
       </div>
-      <div class="col-8">
-        <b-form-input id="valPlacementDamper" v-model="valPlacementDamper" type="text" tabindex="19" @keydown.enter="$parent.$emit('onAddFormElement', 'Autocomplete')"></b-form-input>
+      <div class="col-9">
+        <span id="valFlexibleConnection" contenteditable="true" tabindex="18" @keyup="updateInputFlexibleConnection"></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <span>{{ keyPlacementDamper }}</span>
+      </div>
+      <div class="col-9">
+        <span id="valPlacementDamper" contenteditable="true" tabindex="19" @keyup="updateInputPlacementDamper" @keydown.enter="$parent.$emit('onAddFormElement', 'Autocomplete')"></span>
       </div>
     </div>
   </div>
@@ -37,15 +37,25 @@ export default {
       keyFlexibleConnection: 'Flexible connection:',
       valFlexibleConnection: '',
       keyPlacementDamper: 'Placement of damper:',
-      valPlacementDamper: '',
-      showAutocomplete: false,
-
+      valPlacementDamper: ''
     }
   },
   methods: {
+    updateInputDamper: function () {
+      this.valDamper = document.getElementById("valDamper").innerText
+      console.log(this.valDamper)
+    },
+    updateInputFlexibleConnection: function () {
+      this.valFlexibleConnection = document.getElementById("valFlexibleConnection").innerText
+      console.log(this.valFlexibleConnection)
+    },
+    updateInputPlacementDamper: function () {
+      this.valPlacementDamper = document.getElementById("valPlacementDamper").innerText
+      console.log(this.valPlacementDamper)
+    }
   },
   mounted: function () {
-    var inputs = document.querySelectorAll("input,select")
+    var inputs = document.querySelectorAll("span")
     for (var i = 0 ; i < inputs.length; i++) {
       inputs[i].addEventListener("keypress", function(e){
           if (e.which == 13) {
