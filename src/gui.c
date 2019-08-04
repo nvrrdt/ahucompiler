@@ -15,6 +15,8 @@ int main_gui (int   argc, char *argv[]) {
   GtkBuilder *builder;
   GtkWidget *window;
   GObject *paned;
+  GtkWidget *textview1;
+  GtkTextBuffer *buffer1;
   GError *error = NULL;
 
   gtk_init (&argc, &argv);
@@ -33,6 +35,12 @@ int main_gui (int   argc, char *argv[]) {
   
   paned = gtk_builder_get_object(builder, "paned1");
   g_signal_connect(window, "configure-event", G_CALLBACK(my_handle_positioner), paned);
+
+  textview1 = GTK_WIDGET(gtk_builder_get_object(builder, "textview1"));
+  buffer1 = gtk_text_view_get_buffer (GTK_TEXT_VIEW (textview1));
+  gtk_text_buffer_set_text (buffer1, 
+                            "[\n"
+                            "  {\"projectnumber\": \"", -1);
 
   // get pointers to the two labels
   //g_lbl_hello = GTK_WIDGET(gtk_builder_get_object(builder, "lbl_hello"));
